@@ -9,6 +9,10 @@
 <body>
 
 <h1 class="text-center mt-3">Crud Laravel 11</h1>
+
+<div class="mt-3">
+        @yield('konten')
+</div>
     
 </body>
 </html>
