@@ -1,10 +1,11 @@
 <?php
 
-use app\http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
+
+Route::resource('students', StudentController::class);
+
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/siswa',[SiswaController::class, 'tampil'])->name('siswa.tampil');  
