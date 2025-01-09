@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -11,7 +12,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = \App\Models\Student::all();
+        $students = Student::all();
         return view('students.index', compact('students'));
     }
 
@@ -37,7 +38,7 @@ class StudentController extends Controller
             'hobi' => 'required',
         ]);
     
-        \App\Models\Student::create($request->all());
+        Student::create($request->all());
         return redirect()->route('students.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
@@ -55,7 +56,7 @@ class StudentController extends Controller
     public function edit($id)
     {
         // Ambil data student berdasarkan ID
-        $student = \App\Models\Student::find($id);
+        $student = Student::find($id);
     
         // Jika student tidak ditemukan, redirect kembali dengan pesan error
         if (!$student) {
@@ -83,7 +84,7 @@ class StudentController extends Controller
         ]);
     
         // Cari data siswa berdasarkan ID
-        $student = \App\Models\Student::find($id);
+        $student = Student::find($id);
     
         // Jika siswa tidak ditemukan, redirect kembali dengan pesan error
         if (!$student) {
@@ -100,7 +101,7 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(\App\Models\Student $student)
+    public function destroy(Student $student)
     {
         $student->delete();
         return redirect()->route('students.index')->with('success', 'Data berhasil dihapus!');
