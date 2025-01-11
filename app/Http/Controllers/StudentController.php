@@ -36,7 +36,7 @@ class StudentController extends Controller
             'no_hp' => 'required',
             'jenis_kelamin' => 'required',
             'hobi' => 'required',
-        ]);     
+        ]); 
     
         Student::create($request->all());
         return redirect()->route('students.index')->with('success', 'Data berhasil ditambahkan!');
