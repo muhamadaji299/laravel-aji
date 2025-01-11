@@ -36,7 +36,7 @@ class StudentController extends Controller
             'no_hp' => 'required',
             'jenis_kelamin' => 'required',
             'hobi' => 'required',
-        ]);
+        ]);     
     
         Student::create($request->all());
         return redirect()->route('students.index')->with('success', 'Data berhasil ditambahkan!');
@@ -101,7 +101,7 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Student $student)
+    public function destroy(Student $student) //pemanggilan student dari models
     {
         $student->delete();
         return redirect()->route('students.index')->with('success', 'Data berhasil dihapus!');

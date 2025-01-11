@@ -21,8 +21,8 @@
         </div>
     @endif
 
-    <!-- Form untuk menambah data siswa tanpa CSRF token -->
-    <form action="{{ route('students.store') }}" method="POST">
+    <!-- Form untuk menambah data siswa dengan CSRF token -->
+    <form action="{{ route('students.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group">
@@ -56,6 +56,11 @@
         <div class="form-group">
             <label for="hobi">Hobi</label>
             <input type="text" name="hobi" id="hobi" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="foto">Foto</label>
+            <input type="file" name="foto" id="foto" class="form-control" required>
         </div>
 
         <button type="submit" class="btn btn-success mt-3">Simpan Data</button>
