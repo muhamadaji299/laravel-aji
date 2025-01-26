@@ -6,3 +6,4 @@ Soal 1:
     <li>Membuat Seeder (data dummy)</li>
     <li>Membuat CRUD</li>
 </ul>
+
