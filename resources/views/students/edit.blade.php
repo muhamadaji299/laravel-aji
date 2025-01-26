@@ -43,7 +43,7 @@
 
         <div class="form-group">
             <label for="no_hp">No HP</label>
-            <input type="text" name="no_hp" id="no_hp" class="form-control" value="{{ old('no_hp', $student->no_hp) }}" required>
+            <input type="number" name="no_hp" id="no_hp" class="form-control" value="{{ old('no_hp', $student->no_hp) }}" required>
         </div>
 
         <div class="form-group">
@@ -57,6 +57,11 @@
         <div class="form-group">
             <label for="hobi">Hobi</label>
             <input type="text" name="hobi" id="hobi" class="form-control" value="{{ old('hobi', $student->hobi) }}" required>
+        </div>
+        <div class="form-group">
+            <label for="foto">Foto</label>
+            <input type="file" name="foto" id="foto" class="form-control" accept="image/*" value="" required>
+            <img id="preview" alt="preview gambar">
         </div>
 
         <button type="submit" class="btn btn-success mt-3">Update Data</button>

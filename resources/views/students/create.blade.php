@@ -60,7 +60,8 @@
 
         <div class="form-group">
             <label for="foto">Foto</label>
-            <input type="file" name="foto" id="foto" class="form-control" required>
+            <input type="file" name="foto" id="foto" class="form-control" accept="image/*" required>
+            <img id="preview" alt="preview gambar">
         </div>
 
         <button type="submit" class="btn btn-success mt-3">Simpan Data</button>
