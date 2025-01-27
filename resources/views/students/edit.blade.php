@@ -22,7 +22,7 @@
     @endif
 
     <!-- Form untuk mengedit data siswa -->
-    <form action="{{ route('students.update', $student->id) }}" method="POST">
+    <form action="{{ route('students.update', $student->id) }}" method="POST"  enctype="multipart/form-data">
         @csrf
         @method('PUT') <!-- Menambahkan metode PUT untuk update -->
 
@@ -60,8 +60,13 @@
         </div>
         <div class="form-group">
             <label for="foto">Foto</label>
-            <input type="file" name="foto" id="foto" class="form-control" accept="image/*" value="" required>
-            <img id="preview" alt="preview gambar">
+            @if($student->foto)
+                <div class="mb-2">
+                    <img src="{{ asset('storage/' . $student->foto) }}" alt="Foto {{ $student->nama }}" class="img-thumbnail" width="150">
+                </div>
+            @endif
+            <input type="file" name="foto" id="foto" class="form-control" accept="image/*" >
+            <small class="form-text text-muted">Kosongkan jika tidak ingin mengganti foto.</small>
         </div>
 
         <button type="submit" class="btn btn-success mt-3">Update Data</button>

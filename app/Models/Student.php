@@ -18,6 +18,7 @@ class Student extends Model
         'no_hp',
         'jenis_kelamin',
         'hobi',
+        'foto',
     ];
 
     // Jika perlu, tambahkan juga protected $guarded untuk menghindari field tertentu agar tidak bisa diisi.

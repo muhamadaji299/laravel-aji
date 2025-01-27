@@ -23,6 +23,7 @@ class StudentFactory extends Factory
             'no_hp' => $this->faker->phoneNumber, // Nomor telepon acak
             'jenis_kelamin' => $this->faker->randomElement(['Laki-laki', 'Perempuan']), // Jenis kelamin acak
             'hobi' => $this->faker->word, // Hobi acak
+            'foto' => 'images/default.png', // Path foto default
         ];
     }
 }
