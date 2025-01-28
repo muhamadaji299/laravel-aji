@@ -16,7 +16,7 @@
             <div>
                 <a href="{{ route('welcome') }}" class="btn btn-secondary">Back</a>
                 <a href="{{ route('students.create') }}" class="btn btn-primary">Tambah Data</a>
-                <a href="{{ route('welcome') }}" class="btn btn-success">Excel</a>
+                <a href="{{ route('export-students') }}" class="btn btn-success">Excel</a>
             </div>
             <form action="/" method="GET" class="d-flex">
                 <input type="text" name="search" class="form-control me-2" placeholder="Cari Data Anda..." value="{{ request('search') }}">
