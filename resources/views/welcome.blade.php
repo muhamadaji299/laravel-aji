@@ -5,11 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crud Laravel</title>
-  <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css')   }}">
-  <script src="https://cdn.tailwindcss.com">
-  </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+
   <style>
     body {
       background: #fff;
@@ -23,37 +22,32 @@
 </head>
 
 <body>
-  <header class="bg-white shadow-md">
-    <div class="container mx-auto flex justify-between items-center py-3 px-9">
-      <div class="flex items-center">
-        <p class="fs-3 text-dark fw-bolder ">Laravel 11 Crud.</p>
+  <header class="bg-white shadow-sm">
+    <div class="container d-flex justify-content-between align-items-center py-3 px-3">
+      <div class="d-flex align-items-center">
+        <p class="fs-3 text-dark fw-bolder">Laravel 11 Crud.</p>
       </div>
     </div>
   </header>
-  <div class="text-center p-6 relative mt-11"> <!-- Tambahkan kelas mt-12 untuk memberi jarak -->
-    <h1 class="text-5xl md:text-7xl font-bold text-black leading-tight">
+  <div class="text-center py-5 mt-5">
+    <h1 class="display-4 fw-bold text-black">
       Membuat Projek
-      <span class="text-blue-600">
-        Laravel 11
-      </span>
+      <span class="text-primary">Laravel 11</span>
     </h1>
-    <p class="text-xl md:text-2xl text-gray-800 mt-4">
-      Projek yg mengacu pada crud
+    <p class="fs-5 text-secondary mt-3">
+      Projek yang mengacu pada CRUD
     </p>
-    <p class="text-gray-600 mt-2">
+    <p class="text-muted mt-2">
       CRUD adalah singkatan dari Create, Read, Update, dan Delete, yang merupakan empat operasi dasar dalam pengelolaan data pada aplikasi.
     </p>
-    <form action="{{ route('students.index')}}" method="GET">
-      <button class="mt-6 px-6 py-3 bg-primary text-white rounded-full text-lg flex items-center justify-center mx-auto">
+    <form action="{{ route('students.index') }}" method="GET">
+      <button class="btn btn-primary mt-4 px-4 py-2">
         Halaman Crud
       </button>
-    </div>
-
-  </form>
+    </form>
   </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-
-</head>
 
 </html>
