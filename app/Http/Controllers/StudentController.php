@@ -14,6 +14,20 @@ class StudentController extends Controller
     {
         $students = Student::all();
         return view('students.index', compact('students'));
+        $search = $request->input('search');
+
+        if ($search) {
+            $students = Student::where('nama', 'like', "%{$search}%")
+                               ->orWhere('alamat', 'like', "%{$search}%")
+                               ->orWhere('no_hp', 'like', "%{$search}%")
+                               ->orWhere('hobi', 'like', "%{$search}%")
+                               ->get();
+        } else {
+            $students = Student::all();
+        }
+    
+        return view('students.index', compact('students'));
+    
     }
 
     /**

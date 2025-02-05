@@ -18,7 +18,7 @@
                 <a href="{{ route('students.create') }}" class="btn btn-primary">Tambah Data</a>
                 <a href="{{ route('export-students') }}" class="btn btn-success">Excel</a>
             </div>
-            <form action="/" method="GET" class="d-flex">
+            <form action="{{ route('students.index') }}" method="GET" class="d-flex">
                 <input type="text" name="search" class="form-control me-2" placeholder="Cari Data Anda..." value="{{ request('search') }}">
                 <button type="submit" class="btn btn-outline-primary">Cari</button>
             </form>
@@ -50,25 +50,9 @@
                     <td>
                         <!-- Tombol Edit -->
                         <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#confirmEditModal">
-                            Edit
+                        <a href="{{ route('students.edit', $student->id) }}" class="text-white text-decoration-none">Edit</a>
                         </button>
-                        <div class="modal fade" id="confirmEditModal" tabindex="-1" aria-labelledby="confirmEditModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="confirmEditModalLabel">Konfirmasi Edit</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Apakah Anda yakin ingin mengedit data ini?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                        <a href="{{ route('students.edit', $student->id) }}" class="btn btn-warning">Ya, Edit</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                 
 
                         <!-- Tombol Hapus -->
                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">

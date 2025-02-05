@@ -28,7 +28,7 @@
 
         <div class="form-group">
             <label for="nis">NIS</label>
-            <input type="text" name="nis" id="nis" class="form-control" value="{{ old('nis', $student->nis) }}" required>
+            <input type="number" name="nis" id="nis" class="form-control" value="{{ old('nis', $student->nis) }}" required>
         </div>
 
         <div class="form-group">
@@ -69,7 +69,27 @@
             <small class="form-text text-muted">Kosongkan jika tidak ingin mengganti foto.</small>
         </div>
 
-        <button type="submit" class="btn btn-success mt-3">Update Data</button>
+        <button type="button" class="btn btn-warning mt-3" data-bs-toggle="modal" data-bs-target="#confirmEditModal">
+        Update Data
+    </button>
+        <div class="modal fade" id="confirmEditModal" tabindex="-1" aria-labelledby="confirmEditModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmEditModalLabel">Konfirmasi Edit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Apakah Anda yakin ingin mengedit data ini?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <!-- Form Update data ketika tombol Ya diklik -->
+                    <button type="submit" class="btn btn-warning">Ya, Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>  
         <a href="{{ route('students.index') }}" class="btn btn-secondary mt-3">Kembali</a>
     </form>
 </div>
