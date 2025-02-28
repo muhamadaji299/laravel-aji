@@ -16,15 +16,42 @@
             <div>
                 <a href="{{ route('welcome') }}" class="btn btn-secondary">Back</a>
                 <a href="{{ route('students.create') }}" class="btn btn-primary">Tambah Data</a>
-                <a href="{{ route('export-students') }}" class="btn btn-success">Excel</a>
+                <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#confirmDownloadModal">
+                    Excel
+                </button>
+
+                <div class="modal fade" id="confirmDownloadModal" tabindex="-1" aria-labelledby="confirmDownloadModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmDownloadModalLabel">Konfirmasi Download</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Apakah Anda ingin mendownload versi Excel dari data ini?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <form action="{{ route('export-students') }}" method="GET" class="d-inline">
+                                    @csrf
+                                    @method('GET')
+                                    <button type="submit" class="btn btn-success">Ya, Download Excel</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+
+
             <form action="{{ route('students.index') }}" method="GET" class="d-flex">
                 <input type="text" name="search" class="form-control me-2" placeholder="Cari Data Anda..." value="{{ request('search') }}">
                 <button type="submit" class="btn btn-outline-primary">Cari</button>
             </form>
         </div>
-        <table class="table table-bordered">
-            <thead>
+        <table class="table table-hover  text-center">
+            <thead class="table-info">
                 <tr>
                     <th>NIS</th>
                     <th>Nama</th>
@@ -45,16 +72,15 @@
                     <td>{{ $student->no_hp }}</td>
                     <td>{{ $student->jenis_kelamin }}</td>
                     <td>{{ $student->hobi }}</td>
-                    <td><img src="{{ asset('storage/' . $student->foto) }}" alt="Foto {{ $student->nama }}"
-                            alt="Foto {{ $student->nama }}" style="width: 100px; height: auto;"></td>
+                    <td>
+                        <img src="{{ asset('storage/' . $student->foto) }}" alt="Foto {{ $student->nama }}" class="img-thumbnail" style="width: 100px; height: auto;">
+                    </td>
                     <td>
                         <!-- Tombol Edit -->
                         <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#confirmEditModal">
-                        <a href="{{ route('students.edit', $student->id) }}" class="text-white text-decoration-none">Edit</a>
+                            <a href="{{ route('students.edit', $student->id) }}" class="text-white text-decoration-none">Edit</a>
                         </button>
-                 
-
-                        <!-- Tombol Hapus -->
+                    <!-- Tombol Hapus -->
                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
                             Hapus
                         </button>

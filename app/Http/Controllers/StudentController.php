@@ -4,32 +4,39 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $students = Student::all();
-        return view('students.index', compact('students'));
+        // Mengambil input pencarian
         $search = $request->input('search');
-
-        if ($search) {
-            $students = Student::where('nama', 'like', "%{$search}%")
-                               ->orWhere('alamat', 'like', "%{$search}%")
-                               ->orWhere('no_hp', 'like', "%{$search}%")
-                               ->orWhere('hobi', 'like', "%{$search}%")
-                               ->get();
-        } else {
-            $students = Student::all();
-        }
+    
+        // Query pencarian dengan relevansi
+        $students = Student::when($search, function ($query) use ($search) {
+            $query->where('nama', $search) // Jika nama persis cocok, prioritas tinggi
+                ->orWhere('nama', 'LIKE', "%{$search}%")
+                ->orWhere('alamat', 'LIKE', "%{$search}%")
+                ->orWhere('no_hp', 'LIKE', "%{$search}%")
+                ->orWhere('hobi', 'LIKE', "%{$search}%");
+        })->orderByRaw("
+            CASE 
+                WHEN nama = ? THEN 3
+                WHEN nama LIKE ? THEN 2
+                WHEN alamat LIKE ? OR no_hp LIKE ? OR hobi LIKE ? THEN 1
+                ELSE 0
+            END DESC, id ASC
+        ", [$search, "%{$search}%", "%{$search}%", "%{$search}%", "%{$search}%"])
+        ->get();
     
         return view('students.index', compact('students'));
-    
     }
-
+    
+    
     /**
      * Show the form for creating a new resource.
      */
@@ -101,6 +108,7 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
             // Validasi input
             $request->validate([
                 'nis' => 'required|unique:aji_table,nis,' . $id,

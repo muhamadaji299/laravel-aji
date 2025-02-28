@@ -72,11 +72,30 @@
                 <small class="text-muted">Upload foto dalam format JPEG/PNG (maksimal 2MB).</small>
                 <img id="preview" class="img-thumbnail mt-3 d-none" style="max-width: 200px;">
             </div>
-
-            <button type="submit" class="btn btn-primary mt-1">Simpan Data</button>
+            <button type="button" class="btn btn-primary mt-1" data-bs-toggle="modal" data-bs-target="#confirmEditModal">
+                Tambah Data
+            </button>
+            <div class="modal fade" id="confirmEditModal" tabindex="-1" aria-labelledby="confirmEditModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmEditModalLabel">Konfirmasi Tammbah Data</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Apakah Anda yakin ingin menambahkan data ini?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Ya, Tambahkan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <a href="{{ route('students.index') }}" class="btn btn-secondary mt-1">Kembali</a>
         </form>
     </div>
+</div>
 </div>
 
 <script>
