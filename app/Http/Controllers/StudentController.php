@@ -16,15 +16,15 @@ class StudentController extends Controller
         // Mengambil input pencarian
         $search = $request->input('search');
     
-        // Query pencarian dengan relevansi
+        // Query pencarian dengan relevansi (kapan)
         $students = Student::when($search, function ($query) use ($search) {
-            $query->where('nama', $search) // Jika nama persis cocok, prioritas tinggi
+            $query->where('nama', $search) // Jika nama persis cocok, prioritas tinggi (dimana)
                 ->orWhere('nama', 'LIKE', "%{$search}%")
                 ->orWhere('alamat', 'LIKE', "%{$search}%")
                 ->orWhere('no_hp', 'LIKE', "%{$search}%")
                 ->orWhere('hobi', 'LIKE', "%{$search}%");
         })->orderByRaw("
-            CASE 
+            CASE       
                 WHEN nama = ? THEN 3
                 WHEN nama LIKE ? THEN 2
                 WHEN alamat LIKE ? OR no_hp LIKE ? OR hobi LIKE ? THEN 1

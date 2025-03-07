@@ -43,15 +43,13 @@
                 </div>
             </div>
 
-
-
             <form action="{{ route('students.index') }}" method="GET" class="d-flex">
                 <input type="text" name="search" class="form-control me-2" placeholder="Cari Data Anda..." value="{{ request('search') }}">
                 <button type="submit" class="btn btn-outline-primary">Cari</button>
             </form>
         </div>
         <table class="table table-hover  text-center">
-            <thead class="table-info">
+            <thead class="table-primary">
                 <tr>
                     <th>NIS</th>
                     <th>Nama</th>

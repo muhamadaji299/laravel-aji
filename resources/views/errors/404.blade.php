@@ -13,7 +13,7 @@
         <p class="lead">
             Halaman yang Anda cari mungkin telah dihapus atau sementara tidak tersedia.
         </p>
-        <a href="{{ url('/') }}" class="btn btn-primary mt-3">Kembali ke Beranda</a>
+        <a href="{{ route('students.index') }}" class="btn btn-primary mt-3">Kembali ke Beranda</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
